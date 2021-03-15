@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+mainClassName = 'ru.stqa.pft.sandbox.MyFirstProgram'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'org.testng:testng:6.10'
+}
+
+test {
+    useTestNG()
+}
