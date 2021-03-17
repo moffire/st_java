@@ -6,7 +6,7 @@ import ru.stqa.pft.addressbook.model.ContactData;
 public class ContactCreationTest extends TestBase{
 
     @Test
-    public void createContactTest(){
+    public void testCreateContact(){
         app.getNavigationHelper().goToContactsPage();
         app.getContactHelper().fillContactForm(new ContactData(
                 "Ivan",
