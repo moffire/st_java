@@ -3,10 +3,10 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class HelperBase {
+public class BaseHelper {
     protected FirefoxDriver driver;
 
-    public HelperBase(FirefoxDriver driver) {
+    public BaseHelper(FirefoxDriver driver) {
         this.driver = driver;
     }
 
@@ -14,11 +14,15 @@ public class HelperBase {
         click(By.name("edit"));
     }
 
+    public void submitContactCreation() {
+        click(By.name("submit"));
+    }
+
     public void submitGroupModification() {
         click(By.name("update"));
     }
 
-    protected void type(By locator, String text) {
+    protected void fillField(By locator, String text) {
         click(locator);
         driver.findElement(locator).clear();
         driver.findElement(locator).sendKeys(text);

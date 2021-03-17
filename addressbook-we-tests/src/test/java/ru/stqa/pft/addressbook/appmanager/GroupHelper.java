@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.GroupData;
 
-public class GroupHelper extends HelperBase {
+public class GroupHelper extends BaseHelper {
 
     public GroupHelper(FirefoxDriver driver) {
         super(driver);
@@ -15,9 +15,9 @@ public class GroupHelper extends HelperBase {
     }
 
     public void fillGroupForm(GroupData groupData) {
-        type(By.name("group_name"), groupData.getGroupName());
-        type(By.name("group_header"), groupData.getFormHeader());
-        type(By.name("group_footer"), groupData.getFormFooter());
+        fillField(By.name("group_name"), groupData.getGroupName());
+        fillField(By.name("group_header"), groupData.getFormHeader());
+        fillField(By.name("group_footer"), groupData.getFormFooter());
     }
 
     public void initGroupCreation() {
