@@ -4,42 +4,36 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.GroupData;
 
-public class GroupHelper {
-    private FirefoxDriver driver;
+public class GroupHelper extends HelperBase {
 
     public GroupHelper(FirefoxDriver driver) {
-        this.driver = driver;
-    }
-
-    public void returnToGroupPage() {
-      driver.findElement(By.linkText("group page")).click();
-    }
-
-    public void submitGroupCreation() {
-      driver.findElement(By.name("submit")).click();
-    }
-
-    public void fillGroupForm(GroupData groupData) {
-      driver.findElement(By.name("group_name")).click();
-      driver.findElement(By.name("group_name")).clear();
-      driver.findElement(By.name("group_name")).sendKeys(groupData.getGroupName());
-      driver.findElement(By.name("group_header")).click();
-      driver.findElement(By.name("group_header")).clear();
-      driver.findElement(By.name("group_header")).sendKeys(groupData.getFormHeader());
-      driver.findElement(By.name("group_footer")).click();
-      driver.findElement(By.name("group_footer")).clear();
-      driver.findElement(By.name("group_footer")).sendKeys(groupData.getFormFooter());
-    }
-
-    public void initGroupCreation() {
-      driver.findElement(By.name("new")).click();
+        super(driver);
     }
 
     public void deleteSelectedGroups() {
-      driver.findElement(By.xpath("(//input[@name='delete'])[2]")).click();
+        click(By.xpath("(//input[@name='delete'])[2]"));
+    }
+
+    public void fillGroupForm(GroupData groupData) {
+        type(By.name("group_name"), groupData.getGroupName());
+        type(By.name("group_header"), groupData.getFormHeader());
+        type(By.name("group_footer"), groupData.getFormFooter());
+    }
+
+    public void initGroupCreation() {
+        click(By.name("new"));
+    }
+
+    public void returnToGroupPage() {
+        click(By.linkText("group page"));
     }
 
     public void selectGroup() {
-      driver.findElement(By.name("selected[]")).click();
+        click(By.name("selected[]"));
     }
+
+    public void submitGroupCreation() {
+        click(By.name("submit"));
+    }
+
 }
