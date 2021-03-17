@@ -10,6 +10,14 @@ public class HelperBase {
         this.driver = driver;
     }
 
+    public void initGroupModification() {
+        click(By.name("edit"));
+    }
+
+    public void submitGroupModification() {
+        click(By.name("update"));
+    }
+
     protected void type(By locator, String text) {
         click(locator);
         driver.findElement(locator).clear();
