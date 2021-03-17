@@ -17,4 +17,8 @@ public class NavigationHelper extends BaseHelper {
     public void goToContactsPage(){
         click(By.linkText("add new"));
     }
+
+    public void goToMainPage() {
+        driver.get("http://localhost/addressbook/index.php");
+    }
 }
