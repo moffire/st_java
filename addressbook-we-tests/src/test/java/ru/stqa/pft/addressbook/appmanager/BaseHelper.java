@@ -1,12 +1,12 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebDriver;
 
 public class BaseHelper {
-    protected FirefoxDriver driver;
+    protected WebDriver driver;
 
-    public BaseHelper(FirefoxDriver driver) {
+    public BaseHelper(WebDriver driver) {
         this.driver = driver;
     }
 
