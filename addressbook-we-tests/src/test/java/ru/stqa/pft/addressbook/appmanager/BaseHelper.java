@@ -14,6 +14,14 @@ public class BaseHelper {
         click(By.name("edit"));
     }
 
+    public void initContactModification(){
+        click(By.cssSelector("[title=Edit]"));
+    }
+
+    public void updateButton(){
+        click(By.cssSelector("[name=update]"));
+    }
+
     public void submitContactCreation() {
         click(By.name("submit"));
     }
