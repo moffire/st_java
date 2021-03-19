@@ -22,8 +22,8 @@ public class BaseHelper {
         click(By.cssSelector("[name=update]"));
     }
 
-    public void submitContactCreation() {
-        click(By.name("submit"));
+    public void enterButton() {
+        click(By.cssSelector("[value=Enter]"));
     }
 
     public void deleteContact() {

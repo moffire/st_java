@@ -17,6 +17,6 @@ public class ContactCreationTest extends TestBase{
                 "SPb",
                 "+79990101010",
                 "aaa@mail.ru"));
-        app.getContactHelper().submitContactCreation();
+        app.getContactHelper().enterButton();
     }
 }
