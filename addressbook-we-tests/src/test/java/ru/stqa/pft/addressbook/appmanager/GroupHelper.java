@@ -10,6 +10,13 @@ public class GroupHelper extends BaseHelper {
         super(driver);
     }
 
+    public void createGroup(GroupData groupData) {
+        initGroupCreation();
+        fillGroupForm(groupData);
+        submitGroupCreation();
+        returnToGroupPage();
+    }
+
     public void deleteSelectedGroups() {
         click(By.xpath("(//input[@name='delete'])[2]"));
     }
@@ -22,6 +29,10 @@ public class GroupHelper extends BaseHelper {
 
     public void initGroupCreation() {
         click(By.name("new"));
+    }
+
+    public boolean isGroupPresents() {
+        return isElementPresent(By.name("selected[]"));
     }
 
     public void returnToGroupPage() {
