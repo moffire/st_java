@@ -19,7 +19,7 @@ public class NavigationHelper extends BaseHelper {
       click(By.linkText("groups"));
     }
 
-    public void goToContactsPage() {
+    public void goToContactCreationPage() {
         if (isElementPresent(By.id("theform"))) {
             return;
         }
