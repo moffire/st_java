@@ -6,9 +6,9 @@ import ru.stqa.pft.addressbook.model.ContactData;
 public class ContactCreationTest extends TestBase{
 
     @Test
-    public void testCreateContact(){
+    public void testCreateContact() {
         app.getNavigationHelper().goToContactsPage();
-        app.getContactHelper().fillContactForm(new ContactData(
+        app.getContactHelper().createContact(new ContactData(
                 "Ivan",
                 "Petrov",
                 "OOOPPP",
@@ -17,6 +17,5 @@ public class ContactCreationTest extends TestBase{
                 "SPb",
                 "+79990101010",
                 "aaa@mail.ru"));
-        app.getContactHelper().enterButton();
     }
 }

@@ -10,6 +10,11 @@ public class ContactHelper extends BaseHelper {
         super(driver);
     }
 
+    public void createContact(ContactData contactData) {
+        fillContactForm(contactData);
+        enterButton();
+    }
+
     public void fillContactForm(ContactData contactData) {
         fillField(By.name("firstname"), contactData.getFirstname());
         fillField(By.name("lastname"), contactData.getLastname());
@@ -19,5 +24,9 @@ public class ContactHelper extends BaseHelper {
         fillField(By.name("address"), contactData.getAddress());
         fillField(By.name("mobile"), contactData.getMobile());
         fillField(By.name("email"), contactData.getEmail());
+    }
+
+    public boolean isContactPresents() {
+        return isElementPresent(By.name("entry"));
     }
 }
