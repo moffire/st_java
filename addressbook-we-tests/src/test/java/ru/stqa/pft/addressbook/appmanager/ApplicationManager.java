@@ -27,7 +27,7 @@ public class ApplicationManager {
             case BrowserType.IE -> driver = new InternetExplorerDriver();
         }
 
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         String baseUrl = "http://localhost/addressbook/index.php";
         driver.get(baseUrl);
         SessionHelper sessionHelper = new SessionHelper(driver);
