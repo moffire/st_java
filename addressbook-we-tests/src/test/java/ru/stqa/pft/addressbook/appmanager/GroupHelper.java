@@ -35,8 +35,13 @@ public class GroupHelper extends NavigationHelper {
         return isElementPresent(By.name("selected[]"));
     }
 
-    public void selectGroup() {
-        click(By.name("selected[]"));
+    public void selectGroup(int index) {
+        try {
+            driver.findElements(By.name("selected[]")).get(index).click();
+        } catch (IndexOutOfBoundsException ex) {
+            driver.findElements(By.name("selected[]")).get(0).click();
+        }
+
     }
 
 }

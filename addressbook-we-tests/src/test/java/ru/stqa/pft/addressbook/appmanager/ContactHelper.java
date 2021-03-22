@@ -33,4 +33,13 @@ public class ContactHelper extends NavigationHelper {
     public int getContactsCount() {
         return driver.findElements(By.name("selected[]")).size();
     }
+
+    public void selectContact(int index) {
+        try {
+            driver.findElements(By.name("selected[]")).get(index).click();
+        } catch (IndexOutOfBoundsException ex) {
+            driver.findElements(By.name("selected[]")).get(0).click();
+        }
+
+    }
 }

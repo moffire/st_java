@@ -22,7 +22,7 @@ public class ContactDeletionTest extends TestBase {
                     "Mobile",
                     "Email"));
         }
-        app.getContactHelper().click(By.name("selected[]"));
+        app.getContactHelper().selectContact(0);
         app.getContactHelper().deleteContact();
         app.getNavigationHelper().goToMainPage();
         int after = app.getContactHelper().getContactsCount();

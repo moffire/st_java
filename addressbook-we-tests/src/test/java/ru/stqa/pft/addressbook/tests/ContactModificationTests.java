@@ -7,7 +7,7 @@ import ru.stqa.pft.addressbook.model.ContactData;
 public class ContactModificationTests extends TestBase {
 
     // update button is broken and deleting record instead of updating
-    @Test(enabled = false)
+    @Test
     public void testModifyContact(){
         app.getNavigationHelper().goToMainPage();
         int before = app.getContactHelper().getContactsCount();
@@ -23,6 +23,7 @@ public class ContactModificationTests extends TestBase {
                     "Mobile",
                     "Email"));
         }
+        app.getContactHelper().selectContact(before - 1);
         app.getNavigationHelper().initContactModification();
         app.getContactHelper().updateContact("EditedFirstName");
         app.getNavigationHelper().updateButton();
