@@ -2,7 +2,12 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactData;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends NavigationHelper {
 
@@ -13,13 +18,19 @@ public class ContactHelper extends NavigationHelper {
     public void createContact(ContactData contactData) {
         fillField(By.name("firstname"), contactData.getFirstname());
         fillField(By.name("lastname"), contactData.getLastname());
-        fillField(By.name("nickname"), contactData.getNickname());
-        fillField(By.name("title"), contactData.getTitle());
-        fillField(By.name("company"), contactData.getCompany());
-        fillField(By.name("address"), contactData.getAddress());
-        fillField(By.name("mobile"), contactData.getMobile());
-        fillField(By.name("email"), contactData.getEmail());
         enterButton();
+    }
+
+    public List<ContactData> getContactList() {
+        List<ContactData> contactData = new ArrayList<>();
+        List<WebElement> elements = driver.findElements(By.name("entry"));
+        for (WebElement element: elements) {
+            String lastName = element.findElements(By.tagName("td")).get(1).getText();
+            String firstName = element.findElements(By.tagName("td")).get(2).getText();
+            ContactData data = new ContactData(firstName, lastName);
+            contactData.add(data);
+        }
+        return contactData;
     }
 
     public void updateContact(String newData) {

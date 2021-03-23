@@ -14,14 +14,8 @@ public class ContactModificationTests extends TestBase {
         if (! app.getContactHelper().isContactPresents()) {
             app.getNavigationHelper().goToContactCreationPage();
             app.getContactHelper().createContact(new ContactData(
-                    "Firstname",
                     "Lastname",
-                    "Nickname",
-                    "Title",
-                    "Company",
-                    "Address",
-                    "Mobile",
-                    "Email"));
+                    "Nickname"));
         }
         app.getContactHelper().selectContact(before - 1);
         app.getNavigationHelper().initContactModification();
