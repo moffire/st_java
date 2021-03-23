@@ -9,20 +9,20 @@ public class ContactModificationTests extends TestBase {
     // update button is broken and deleting record instead of updating
     @Test(enabled = false)
     public void testModifyContact(){
-        app.getNavigationHelper().goToMainPage();
-        int before = app.getContactHelper().getContactsCount();
-        if (! app.getContactHelper().isContactPresents()) {
-            app.getNavigationHelper().goToContactCreationPage();
-            app.getContactHelper().createContact(new ContactData(
+        app.goTo().mainPage();
+        int before = app.contact().count();
+        if (! app.contact().isContactPresents()) {
+            app.goTo().contactPage();
+            app.contact().create(new ContactData(
                     "Lastname",
                     "Nickname"));
         }
-        app.getContactHelper().selectContact(before - 1);
-        app.getNavigationHelper().initContactModification();
-        app.getContactHelper().updateContact("EditedFirstName");
-        app.getNavigationHelper().updateButton();
-        app.getNavigationHelper().goToMainPage();
-        int after = app.getContactHelper().getContactsCount();
+        app.contact().selectContact(before - 1);
+        app.goTo().initContactModification();
+        app.contact().updateContact("EditedFirstName");
+        app.goTo().updateButton();
+        app.goTo().mainPage();
+        int after = app.contact().count();
         Assert.assertEquals(before, after);
     }
 }

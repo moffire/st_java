@@ -15,13 +15,13 @@ public class ContactHelper extends NavigationHelper {
         super(driver);
     }
 
-    public void createContact(ContactData contactData) {
+    public void create(ContactData contactData) {
         fillField(By.name("firstname"), contactData.getFirstname());
         fillField(By.name("lastname"), contactData.getLastname());
         enterButton();
     }
 
-    public List<ContactData> getContactList() {
+    public List<ContactData> contactList() {
         List<ContactData> contactData = new ArrayList<>();
         List<WebElement> elements = driver.findElements(By.name("entry"));
         for (WebElement element: elements) {
@@ -41,7 +41,7 @@ public class ContactHelper extends NavigationHelper {
         return isElementPresent(By.name("entry"));
     }
 
-    public int getContactsCount() {
+    public int count() {
         return driver.findElements(By.name("selected[]")).size();
     }
 

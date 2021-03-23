@@ -10,15 +10,16 @@ public class ContactCreationTest extends TestBase{
 
     @Test
     public void testCreateContact() {
-        app.getNavigationHelper().goToMainPage();
-        int before = app.getContactHelper().getContactsCount();
-        List<ContactData> beforeList = app.getContactHelper().getContactList();
-        app.getNavigationHelper().goToContactCreationPage();
+        app.goTo().mainPage();
+        int before = app.contact().count();
+        List<ContactData> beforeList = app.contact().contactList();
+        app.goTo().contactPage();
         ContactData newContact = new ContactData("Ivan", "Petrov");
-        app.getContactHelper().createContact(newContact);
-        app.getNavigationHelper().goToMainPage();
-        int after = app.getContactHelper().getContactsCount();
-        List<ContactData> afterList = app.getContactHelper().getContactList();
+        app.contact().create(newContact);
+        app.goTo().mainPage();
+        int after = app.contact().count();
+        List<ContactData> afterList = app.contact().contactList();
+
         Assert.assertEquals(after, before + 1);
         beforeList.add(newContact);
         Assert.assertTrue(beforeList.containsAll(afterList));

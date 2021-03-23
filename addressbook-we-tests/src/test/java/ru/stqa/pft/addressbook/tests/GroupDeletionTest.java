@@ -9,20 +9,25 @@ import java.util.List;
 
 public class GroupDeletionTest extends TestBase {
 
+  @BeforeMethod
+  public void ensurePreconditions() {
+    app.goTo().groupPage();
+    if (! app.group().isGroupPresents()) {
+      app.group().create(new GroupData("test1", null, null));
+    }
+  }
+
   @Test
   public void testGroupDeletion() throws Exception {
-    app.getNavigationHelper().gotoGroupPage();
-    if (! app.getGroupHelper().isGroupPresents()) {
-      app.getGroupHelper().createGroup(new GroupData("newGroup", "groupHeader", "groupFooter"));
-    }
-    List<GroupData> before = app.getGroupHelper().getGroupList();
-    app.getGroupHelper().selectGroup(before.size() - 1);
-    app.getGroupHelper().deleteSelectedGroups();
-    app.getGroupHelper().gotoGroupPage();
-    List<GroupData> after = app.getGroupHelper().getGroupList();
-    Assert.assertEquals(after.size(), before.size() - 1);
+    List<GroupData> before = app.group().groupList();
+    int index = before.size() - 1;
+    app.group().delete(index);
+    List<GroupData> after = app.group().groupList();
+    Assert.assertEquals(after.size(), index);
 
-    before.remove(before.size() - 1);
+    before.remove(index);
     Assert.assertEquals(before, after);
   }
+
+
 }

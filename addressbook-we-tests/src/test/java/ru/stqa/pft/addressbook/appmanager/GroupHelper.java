@@ -14,11 +14,25 @@ public class GroupHelper extends NavigationHelper {
         super(driver);
     }
 
-    public void createGroup(GroupData groupData) {
+    public void create(GroupData groupData) {
         click(By.name("new"));
         fillGroupForm(groupData);
         click(By.name("submit"));
-        gotoGroupPage();
+        groupPage();
+    }
+
+    public void modify(int index, GroupData group) {
+        selectGroup(index);
+        initGroupModification();
+        fillGroupForm(group);
+        submitGroupModification();
+        groupPage();
+    }
+
+    public void delete(int index) {
+        selectGroup(index);
+        deleteSelectedGroups();
+        groupPage();
     }
 
     public void deleteSelectedGroups() {
@@ -31,11 +45,7 @@ public class GroupHelper extends NavigationHelper {
         fillField(By.name("group_footer"), groupData.getFormFooter());
     }
 
-    public int getGroupCount() {
-        return driver.findElements(By.name("selected[]")).size();
-    }
-
-    public List<GroupData> getGroupList() {
+    public List<GroupData> groupList() {
         List<GroupData> groups = new ArrayList<GroupData>();
         List<WebElement> elements = driver.findElements(By.cssSelector("span.group"));
         for (WebElement element : elements) {

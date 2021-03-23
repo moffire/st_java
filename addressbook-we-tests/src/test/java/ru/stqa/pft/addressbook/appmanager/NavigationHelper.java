@@ -10,7 +10,7 @@ public class NavigationHelper extends BaseHelper {
         super(driver);
     }
 
-    public void gotoGroupPage() {
+    public void groupPage() {
         if (isElementPresent(By.tagName("h1"))
                 && driver.findElement(By.tagName("h1")).getText().equals("Groups")
                 && isElementPresent(By.name("new"))) {
@@ -19,14 +19,14 @@ public class NavigationHelper extends BaseHelper {
       click(By.linkText("groups"));
     }
 
-    public void goToContactCreationPage() {
+    public void contactPage() {
         if (isElementPresent(By.id("theform"))) {
             return;
         }
         click(By.linkText("add new"));
     }
 
-    public void goToMainPage() {
+    public void mainPage() {
         if (isElementPresent(By.id("maintable"))) {
             return;
         }
