@@ -51,7 +51,9 @@ public class GroupHelper extends NavigationHelper {
         for (WebElement element : elements) {
             String name = element.getText();
             String id = element.findElement(By.tagName("input")).getAttribute("value");
-            GroupData group = new GroupData(id, name, null, null);
+            GroupData group = new GroupData()
+                    .withId(id)
+                    .withGroupName(name);
             groups.add(group);
         }
         return groups;

@@ -3,23 +3,29 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class GroupData {
-    private final String id;
-    private final String groupName;
-    private final String formHeader;
-    private final String formFooter;
+    private String id;
+    private String groupName;
+    private String formHeader;
+    private String formFooter;
 
-    public GroupData(String id, String groupName, String formHeader, String formFooter) {
+    public GroupData withId(String id) {
         this.id = id;
-        this.groupName = groupName;
-        this.formHeader = formHeader;
-        this.formFooter = formFooter;
+        return this;
     }
 
-    public GroupData(String groupName, String formHeader, String formFooter) {
-        this.id = null;
+    public GroupData withGroupName(String groupName) {
         this.groupName = groupName;
+        return this;
+    }
+
+    public GroupData withFormHeader(String formHeader) {
         this.formHeader = formHeader;
+        return this;
+    }
+
+    public GroupData withFormFooter(String formFooter) {
         this.formFooter = formFooter;
+        return this;
     }
 
     @Override
